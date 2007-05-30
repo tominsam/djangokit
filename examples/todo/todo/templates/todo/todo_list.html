@@ -1,0 +1,18 @@
+<h1>things to do:</h1>
+
+<table border="1">
+<tr><th>added</th><th>todo</th><th>complete?</th></tr>
+
+{% for item in object_list %}
+
+<tr>
+  <td>{{ item.date|date:"r" }}</td>
+  <td><a href="/admin/demo/todo/{{ item.id }}/">{{ item.value }}</a></td>
+  <td>{% if item.completed %}yes{% else %}no{% endif %}</td>
+</tr>
+
+{% endfor %}
+</table>
+
+<p><a href="/admin/">use the admin site to edit items for now</a>. Login
+with username 'admin', password 'password'.</p>

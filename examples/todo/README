@@ -1,0 +1,6 @@
+An utterly trivial example of DjangoKit.
+
+Build a .app using:
+
+  python setup.py py2app
+  

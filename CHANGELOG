@@ -1,0 +1,11 @@
+2007-04-13 Installable
+
+  * Made installable
+  * Added Wiki example
+  * Made source shippable
+  * Added setup.py wrapper
+
+2007-03-28 First public release
+
+  * It works. I won't give it a lot more than that.
+  

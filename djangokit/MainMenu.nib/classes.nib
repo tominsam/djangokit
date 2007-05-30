@@ -1,0 +1,20 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                cancelGoPath = id; 
+                doGoPath = id; 
+                goAdmin = id; 
+                goHome = id; 
+                goPath = id; 
+                myAction = id; 
+            }; 
+            CLASS = DjangoKit; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {customPath = id; pathView = id; webview = id; window = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}
