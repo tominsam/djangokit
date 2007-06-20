@@ -6,7 +6,10 @@ import thread
 import random
 
 # helps py2app. TODO - get this dep walked properly.
-from pysqlite2 import dbapi2 as sqlite
+try:
+    from sqlite3 import dbapi2 as sqlite
+except ImportError:
+    from pysqlite2 import dbapi2 as sqlite
 
 from Foundation import *
 from AppKit import *
@@ -31,7 +34,6 @@ settings.DATABASE_ENGINE # accessng a property inflates the settings
 nibinfo = NSBundle.mainBundle().infoDictionary()[u'DjangoKit']
 if 'settings' in nibinfo:
     for k in nibinfo['settings']:
-        print("*** %s"%k)
         settings.__setattr__(k, nibinfo['settings'][k])
 
 # where do our support files live?
