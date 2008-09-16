@@ -2,7 +2,7 @@ from django.db import models
 
 class Todo(models.Model):
     date = models.DateTimeField('date created', auto_now_add = True)
-    value = models.CharField(maxlength = 200)
+    value = models.CharField(max_length = 200)
     completed = models.BooleanField()
     
     class Admin:
