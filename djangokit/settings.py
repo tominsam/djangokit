@@ -2,7 +2,7 @@
 from AppKit import *
 nibinfo = NSBundle.mainBundle().infoDictionary()[u'DjangoKit']
 APPNAME = nibinfo['appname']
-PRETTYNAME = nibinfo['prettyname']
+APPS = nibinfo['apps']
 
 #import sys
 #if 'pythonpath' in nibinfo:
@@ -78,11 +78,10 @@ ROOT_URLCONF = 'djangokit.urls'
 # no template dirs here - we rely on the app_directoy loader
 TEMPLATE_DIRS = ()
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     #'django.contrib.sites',
     'django.contrib.admin',
-    str(APPNAME), # admin.autodiscover requres this to be a str
-)
+] + map( str, APPS )

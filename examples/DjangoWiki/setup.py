@@ -2,11 +2,11 @@
 from djangokit import setup
 
 setup(
-  appname = "wiki",
-  prettyname = "DjangoWiki",
+  apps = [ "wiki" ],
+  appname = "DjangoWiki",
   version = "0.1",
   author = "Paul Bissex",
   settings = {
-    'WIKI_SITEBASE':'/',
+    'WIKI_SITEBASE':'/wiki/',
   }
 )

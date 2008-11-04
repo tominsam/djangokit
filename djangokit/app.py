@@ -34,6 +34,7 @@ settings.DATABASE_ENGINE # accessing a property inflates the settings
 nibinfo = NSBundle.mainBundle().infoDictionary()[u'DjangoKit']
 if 'settings' in nibinfo:
     for k in nibinfo['settings']:
+        print "%s => %s"%( k, nibinfo['settings'][k] )
         settings.__setattr__(k, nibinfo['settings'][k])
 
 # where do our support files live?
@@ -66,7 +67,7 @@ class DjangoKit(NibClassBuilder.AutoBaseClass):
     def applicationDidFinishLaunching_(self, aNotification):
         self.recentPath = "/"
         
-        self.window.setTitle_( settings.PRETTYNAME )
+        self.window.setTitle_( settings.APPNAME )
     
         res = NSBundle.mainBundle().resourcePath()
 

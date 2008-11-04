@@ -12,15 +12,20 @@ from AppKit import NSBundle
 # I didn't understand. Patches welcome.. :-)
 
 def setup(**args):
-
-    appname = str(args['appname']) # must be str for django internal reasons
-    del args['appname']
     
-    if 'prettyname' in args:
-        prettyname = args['prettyname']
-        del args['prettyname']
+    
+    if "apps" in args:
+        apps = args["apps"]
+        del args['apps']
     else:
-        prettyname = appname
+        apps = [ args["appname"] ]
+        del args['appname']
+    
+    if 'appname' in args:
+        appname = args['appname']
+        del args['appname']
+    else:
+        appname = apps[0]
     
     if 'settings' in args:
         more_settings = args['settings']
@@ -30,7 +35,7 @@ def setup(**args):
     
     NSBundle.mainBundle().infoDictionary()[u'DjangoKit'] = {
       'appname':appname,
-      'prettyname':prettyname,
+      'apps':apps,
     };
     
     os.environ['DJANGO_SETTINGS_MODULE'] = 'djangokit.settings'
@@ -44,21 +49,21 @@ def setup(**args):
 
     plist = dict(
         NSMainNibFile="MainMenu",
-        CFBundleName = prettyname,
+        CFBundleName = appname,
         CFBundleIdentifier="org.jerakeen.DjangoKitApps.%s"%appname, # TODO - could be better
         CFBundleShortVersionString = args['version'],
         CFBundleVersion = args['version'],
         NSHumanReadableCopyright="Copyright 2007 %s"%args['author'],
         DjangoKit={
+          'apps':apps,
           'appname':appname,
-          'prettyname':prettyname,
           'settings':more_settings,
         },
     )
     
     py2app_options = dict(
         plist=plist,
-        packages = [appname, 'djangokit', 'django', "email"],
+        packages = apps + ['djangokit', 'django', "email"],
     )
 
     if 'iconfile' in args:
@@ -100,7 +105,7 @@ def setup(**args):
     setup_core( **dict( args,
         app=[ "%s/app.py"%base ],
         # TODO - this requires a local 'media' folder. Don't.
-        data_files = ['media', nibfile, 'database.sqlite', appname],
+        data_files = ['media', nibfile, 'database.sqlite'] + apps,
         options=dict(py2app=py2app_options),
         cmdclass = { 'django':DjangoCommand, "syncdb":SyncdbCommand }
     ))
