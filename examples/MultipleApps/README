@@ -1,0 +1,6 @@
+An example of putting 2 django apps in a single djangokit project.
+
+Build a .app using:
+
+  python setup.py py2app
+  
