@@ -14,6 +14,7 @@ Currently your app will need a fairly specific folder layout to work,
 use the layout in the examples as a base. Copy a [setup.py file from
 the TODO example][4] and modify it to suit your app, then run
 
+    python setup.py syncdb
     python setup.py py2app
 
 This should produce a stand-alone .app in the local /dist directory. For

@@ -94,6 +94,7 @@ def setup(**args):
         user_options = []
         def initialize_options(self):
             self.command = "syncdb"
+            self.args = ""
 
 
     setup_core( **dict( args,
