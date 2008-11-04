@@ -26,7 +26,7 @@ import djangokit.settings
 
 from django.conf import settings
 import django
-settings.DATABASE_ENGINE # accessng a property inflates the settings
+settings.DATABASE_ENGINE # accessing a property inflates the settings
 
 # now we change the settings object for the current project.
 
