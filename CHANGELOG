@@ -1,3 +1,10 @@
+2008-11-05 (development)
+
+  * Added an 'apps' key to setup.py, allowing multiple apps to be packaged up
+  * This has broken the current behaviour! The default urls.py file puts apps
+    at /<appname>/ rather than a single app at '/', so the root page, and thus 
+    the start page, of your app will now be an ERROR PAGE! Bad thing.
+
 2007-04-13 Installable
 
   * Made installable
